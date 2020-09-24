@@ -1,0 +1,151 @@
+.Post {
+  width: calc(100% - 40px);
+  position: relative;
+  padding: 18px 20px;
+  border-top: 1px solid #ccc;
+}
+
+.Post .post-main {
+  display: flex;
+}
+
+.Post .post-info {
+  flex-grow: 1;
+}
+
+.Post .post-info > *, .Post .post-votes > * {
+  display: block;
+}
+
+/* Side section for upvotes and downvotes */
+.Post .post-votes {
+  width: 25px;
+  padding-right: 5px;
+}
+
+.Post .post-votes span {
+  text-align: center;
+}
+
+.Post .center-y {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Post .post-votes span {
+  width: 15px;
+  margin: 0 auto;
+}
+
+.Post .post-votes .upvote svg {
+  transform: rotate(180deg);
+}
+
+/* Title of the post */
+.Post .post-top * {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.Post .post-top {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.Post .post-top .by {
+  font-size: .8em;
+}
+
+.Post .post-title {
+  font-weight: bold;
+}
+
+.Post .author-h {
+  position: relative;
+}
+
+.Post .profile-pic {
+  position: absolute;
+  bottom: calc(100%);
+  left: calc(50% - (84px / 2));
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 5px;
+  background-color: white;
+  z-index: 100;
+  margin: 0;
+}
+
+.Post .profile-pic img {
+  width: 64px;
+  height: 64px;
+  display: block;
+  padding: 9px;
+  margin: 0;
+}
+
+.Post .author {
+  color: #FE774C;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+/* Body of the post */
+.Post .post-body {
+  line-height: 1.15em;
+  font-size: 16px;
+}
+
+.Post .show-comments {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  font-size: 12px;
+  color: #9c9c9c;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Comment section of the post */
+.Post .post-comments {
+  padding-top: 10px;
+}
+
+.Post .post-comments .comments {
+  border-left: 2px solid #9c9c9c;
+  padding: 10px;
+  margin: 10px;
+}
+
+.Post .Comment {
+  margin: 12px 0;
+}
+
+.Post .Comment:nth-of-type(1) {
+  margin-top: 0;
+}
+
+/* Creating a comment */
+.Post .create-comment {
+  background-color: #AAAAAA;
+  box-shadow: -2px 2px #ccc;
+}
+
+.Post .create-comment * {
+  margin: 5px;
+}
+
+.Post .create-comment textarea {
+  width: calc(100% - 20px);
+  padding: 5px;
+  background-color: #D9D9D9;
+}
+
+.Post .create-comment .submit-comment {
+  font-size: 1.2em;
+  padding: 2px 5px;
+  background-color: #FE774C;
+  color: white;
+}

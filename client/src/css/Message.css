@@ -1,0 +1,8 @@
+/* Messages to the user */
+.Message {
+  position: relative;
+  padding: 8px 20px;
+  background-color: #ccc;
+  border: 1px solid #AAAAAA;
+  border-radius: 3px;
+}

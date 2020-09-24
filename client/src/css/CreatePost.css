@@ -1,0 +1,30 @@
+.CreatePost form {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.CreatePost input, .CreatePost textarea, .CreatePost button {
+  width: calc(100% - 32px);
+  display: block;
+  margin: 8px;
+  padding: 6px 8px;
+  background-color: rgba(255, 255, 255, .8);
+}
+
+.CreatePost .create-post-title {
+  font-weight: bold;
+}
+
+.CreatePost .create-post-body {
+  flex-grow: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.CreatePost .create-post-submit {
+  text-align: center;
+  padding: 5px;
+  color: white;
+  background-color: #FE774C;
+}

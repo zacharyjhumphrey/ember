@@ -1,0 +1,85 @@
+.Account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Account .account-modal {
+  width: 60%;
+  height: 75%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-size: 21px;
+  background-color: white;
+}
+
+.Account .switch-forms {
+  width: 45%;
+  display: block;
+  position: relative;
+  margin: 12px auto;
+  font-size: 19px;
+  font-weight: 600;
+  color: #FE774C;
+}
+
+.Account .switch-forms span {
+  cursor: pointer;
+}
+
+.Account .switch-forms span:nth-of-type(1) {
+  float: left;
+}
+
+.Account .switch-forms span:nth-of-type(2) {
+  float: right;
+}
+
+.Account .form-underline {
+  height: 3px;
+  border-radius: 100px;
+  position: absolute;
+  bottom: -4px;
+  background-color: #FE774C;
+}
+
+.Account .forms-holder {
+  flex-grow: 1;
+  white-space: nowrap;
+}
+
+.Account form {
+  width: 50%;
+  height: 100%;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.Account input, .Account button {
+  width: 90%;
+  margin: 10px auto;
+  padding: 8px 6px;
+  display: block;
+}
+
+.Account input {
+  position: relative;
+  background-color: #D9D9D9;
+  color: gray;
+}
+
+.Account .create-account input {
+  left: 0;
+}
+
+.Account .log-in input {
+  right: 0;
+}
+
+.Account button {
+  font-weight: bold;
+  color: white;
+  background-color: #FE774C;
+}
