@@ -1,17 +1,20 @@
 {
-  "name": "api",
+  "name": "ember_api",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Backend for social media application",
+  "main": "app.js",
   "scripts": {
-    "start": "nodemon app",
+    "start": "node app",
+    "dev": "nodemon app",
+    "heroku-postbuild": "cd client && npm install && npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "zacharyjhumphrey",
   "license": "ISC",
   "dependencies": {
     "async": "^3.2.0",
     "bcrypt": "^5.0.0",
+    "concurrently": "^6.0.0",
     "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.5",
@@ -25,5 +28,8 @@
     "mongoose": "^5.9.27",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

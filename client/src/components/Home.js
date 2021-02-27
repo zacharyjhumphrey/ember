@@ -14,7 +14,7 @@ function Home({ initialAccountValue, user, setUser }) {
     posts: null
   });
 
-  const defaultFeedData = { title: "Your Feed", postsUrl: "http://localhost:8080/posts/" };
+  const defaultFeedData = { title: "Your Feed", postsUrl: "/api/posts/" };
   const [feedState, setFeedState] = useState(defaultFeedData); // null = default YourFeed, string = username of author
 
   const feedProps = {

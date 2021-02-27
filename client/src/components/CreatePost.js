@@ -16,7 +16,7 @@ function CreatePost({ left, z, postState, setPostState }) {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:8080/posts/', {
+    fetch('/api/posts/', {
       method: 'POST',
       withCredentials: true,
       credentials: 'include',

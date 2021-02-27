@@ -1,7 +1,8 @@
 {
-  "name": "client",
+  "name": "ember_client",
   "version": "0.1.0",
   "private": true,
+  "homepage": "/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -13,18 +14,22 @@
     "method-override": "^3.0.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
+    "postinstall": "^0.7.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-flash-message": "^1.0.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.3",
+    "react-scripts": "^4.0.3",
     "react-spring": "^8.0.27",
-    "react-use-measure": "^2.0.1"
+    "react-use-measure": "^2.0.1",
+    "serve": "^11.3.2"
   },
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "dev": "(cd api && npm run start) & npm run start",
-    "build": "react-scripts build",
+    "serve": "serve -s build",
+    "build": "react-scripts build && postinstall",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

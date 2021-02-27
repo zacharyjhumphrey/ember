@@ -3,7 +3,7 @@ import { useSpring, animated } from 'react-spring';
 import useMeasure from 'react-use-measure';
 import classNames from 'classnames';
 import * as easings from 'd3-ease';
-import MessageHandler from './MessageHandler';
+// import MessageHandler from './MessageHandler';
 import userIcon from '../resources/example-profile-pic.png';
 import accountIcon from '../resources/account-icon.svg';
 import '../css/Navbar.css';
@@ -26,12 +26,13 @@ function Navbar({ accountValue, setAccountValue, user, setUser }) {
   });
 
   const logout = () => {
-    fetch('http://localhost:8080/auth/logout', {
+    fetch('/api/auth/logout', {
       method: 'POST',
       withCredentials: true,
       credentials: 'include',
       headers: {
-        'Content-Type': 'application/json;charset=utf-8'
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8',
       }
     }).then((response) => response.json()).then(({success, message, user}) => {
       console.log(user, success, message);

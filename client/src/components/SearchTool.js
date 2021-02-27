@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/SearchTool.css';
 import classNames from 'classnames';
 
@@ -15,11 +15,15 @@ function SearchTool({ left, z, feedState, setFeedState, defaultFeedData }) {
     'Tool': true,
     'current-tool': true
   });
+  const [didMount, setDidMount] = useState(false);
+
+  // Set the state of the application to mounted
+  useEffect(() => setDidMount(true), []);
 
   const [results, setResults] = useState([]);
 
   const handleSearchUser = (substring) => {
-    fetch(`http://localhost:8080/search/users/${substring}`, {
+    fetch(`/api/search/users/${substring}`, {
       method: 'GET',
       withCredentials: true,
       credentials: 'include',
@@ -32,8 +36,15 @@ function SearchTool({ left, z, feedState, setFeedState, defaultFeedData }) {
     });
   }
 
+  if (!didMount) return null;
   return (
-    <div className={searchToolClassNames} style={{ left: `${left}%`, transform: `perspective(600px) translateZ(${z}px)` }}>
+    <div 
+      className={searchToolClassNames} 
+      style={{ 
+        left: `${left}%`, 
+        transform: `perspective(600px) translateZ(${z}px)` 
+      }}>
+
       <div className="search-bar">
         <span className="at author">@</span>
         <input name="search-bar" placeholder="Search..."
@@ -43,7 +54,7 @@ function SearchTool({ left, z, feedState, setFeedState, defaultFeedData }) {
       <div className="display-result" style={{ display: (results !== []) ? "block" : "none" }}>
         {results.map((result, key) => (
           <div className="result" key={key}>
-            <span className="author" onClick={() => setFeedState({ ...feedState, title: `@${result.username}`, postsUrl: `http://localhost:8080/search/user/${result._id}` })} >@{result.username}</span>
+            <span className="author" onClick={() => setFeedState({ ...feedState, title: `@${result.username}`, postsUrl: `/api/search/user/${result._id}` })} >@{result.username}</span>
             <span className="email">{result.email}</span>
           </div>
         ))}

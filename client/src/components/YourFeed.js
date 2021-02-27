@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, } from 'react';
 import classNames from 'classnames';
 import '../css/YourFeed.css';
 import Post from './Post';
@@ -15,7 +15,15 @@ function YourFeed({ feedState, setFeedState, postState, setPostState, user }) {
   useEffect(() => {
     setPostState({ loading: true });
     const apiUrl = `${feedState.postsUrl}`;
-    fetch(apiUrl)
+    fetch(apiUrl, {
+      method: 'GET',
+      withCredentials: true,
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8',
+      }
+    })
       .then((res) => res.json())
       .then((posts) => {
         // Creating new post members (such as when the post is opened in the ui)
@@ -31,7 +39,7 @@ function YourFeed({ feedState, setFeedState, postState, setPostState, user }) {
 
         setPostState({ loading: false, posts: posts });
       });
-  }, [feedState]);
+  }, [feedState, setPostState, user]);
 
   // Component Definitions
   const ListLoading = withListLoading(Post);

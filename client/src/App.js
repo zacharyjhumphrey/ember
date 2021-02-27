@@ -27,11 +27,12 @@ function App() {
 
     // When the component mounts, fetch user data if there is any
     useEffect(() => {
-        fetch('http://localhost:8080/auth/current-user', {
+        fetch('/api/auth/current-user', {
             method: 'GET',
             withCredentials: true,
             credentials: 'include',
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'application/json;charset=utf-8'
             }
         }).then((response) => response.json()).then(({user}) => {
@@ -50,7 +51,7 @@ function App() {
             (user !== undefined)
             ? <Switch>
                 <Route exact path="/">
-                            <Home initialAccountValue={0} user={user} setUser={setUser}/>
+                    <Home initialAccountValue={0} user={user} setUser={setUser}/>
                 </Route>
 
                 <Route path="/create-account">

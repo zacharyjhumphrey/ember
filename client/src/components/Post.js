@@ -8,7 +8,7 @@ import exampleProfilePic from '../resources/example-profile-pic.png';
 function Post({ open, author, title, body, upvotes, downvotes, userUpvoted, userDownvoted, tags, _id, comments, postState, setPostState }) {
   const classes = classNames('Post');
   const [picHover, setHover] = useState(false);
-  const [postComments, setComments] = useState(comments);
+  const [postComments] = useState(comments);
 
   const transitions = useTransition(picHover, null, {
     config: { tension: 210 },
@@ -23,7 +23,7 @@ function Post({ open, author, title, body, upvotes, downvotes, userUpvoted, user
   const handleCreateComment = (e) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8080/comments/`, {
+    fetch(`/api/comments/`, {
       method: 'POST',
       withCredentials: true,
       credentials: 'include',
@@ -49,7 +49,7 @@ function Post({ open, author, title, body, upvotes, downvotes, userUpvoted, user
   }
 
   const handleUpvote = () => {
-    fetch(`http://localhost:8080/posts/${_id}/upvote`, {
+    fetch(`/api/posts/${_id}/upvote`, {
       method: 'PATCH',
       withCredentials: true,
       credentials: 'include',
@@ -80,7 +80,7 @@ function Post({ open, author, title, body, upvotes, downvotes, userUpvoted, user
   }
 
   const handleDownvote = () => {
-    fetch(`http://localhost:8080/posts/${_id}/downvote`, {
+    fetch(`/api/posts/${_id}/downvote`, {
       method: 'PATCH',
       withCredentials: true,
       credentials: 'include',

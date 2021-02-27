@@ -7,11 +7,6 @@ const mongoose = require('mongoose');
 const async = require('async');
 const { getPost } = require('../general-functions.js');
 
-const test = true;
-const msg = (message) => {
-  test ? console.log(message) : null;
-}
-
 /*
   Returns some posts from the server from oldest to newest
 
@@ -63,7 +58,6 @@ router.get('/:postId', async (req, res) => {
   body
 */
 router.post('/', async (req, res) => {
-  msg('Creating a post in server');
   try {
     if (!req.user) throw new Error('You must be logged in to do create a post!');
 
@@ -90,7 +84,7 @@ router.post('/', async (req, res) => {
       res.json({ message: 'Post Created!', success: true, data: newPost });
     });
   } catch (err) {
-    msg(err.message);
+    console.log(err.message);
     res.json({ err: err.message });
   }
 });

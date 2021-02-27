@@ -41,8 +41,6 @@ router.post('/', async (req, res) => {
     const originalPost = await Post.findById(req.body.originalPost);
     if (originalPost == null) throw new Error('Post could not be found');
 
-    console.log(user, originalPost);
-
     const commentData = {
       originalPost: originalPost._id,
       author: user._id,

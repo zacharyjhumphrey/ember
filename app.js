@@ -5,14 +5,34 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const flash = require('connect-flash');
+const path = require('path');
 const MongoStore = require('connect-mongo')(session);
 require('dotenv/config');
 
 const app = express();
 
 /*
-    GOAL FOR TODAY:
-    CONFIGURE THE ROUTES FOR THE SEARCH BACKEND (Really, it's just gonna be the author, so that's not gonna be hard)
+    GOALS FOR TODAY:
+    Combine the two folders so that they can run in Heroku
+        1. Need to create a package.json command that will run both servers on Heroku
+        - COMPLETED - 2. Need to create a command to build the react app
+    
+    Find a way to update packages on github as needed: 
+
+    Clear database and create more relevant posts for recruiters to see what's going on in the app: 
+      1. Clear all of the database
+      2. Create three users
+      3. Create four posts
+      4. Comment on all posts as different users
+      5. Upvote/downvote different posts as different users 
+        a. Make sure that unauthenticated users can't log in
+
+
+    FUTURE GOALS:   
+    Implement the message system:
+      For example: Send a message to the user that they are not logged in. 
+    
+    Fix memory leak: 
 */
 
 // Connect to database
@@ -30,7 +50,7 @@ const User = require('./models/User');
 
 // // Middlewares
 // CORS
-app.use(cors({ credentials: true, origin: 'http://localhost:3000'}));
+// app.use(cors({ credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.urlencoded({ extended: true }));
 
 // Body Parsing
@@ -61,26 +81,20 @@ app.use(function (req, res, next) {
 });
 
 // Routes
-app.use('/auth', require('./routes/auth'));
-app.use('/search', require('./routes/search'));
-app.use('/users', require('./routes/users'));
-app.use('/posts', require('./routes/posts'));
-app.use('/comments', require('./routes/comments'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/search', require('./routes/search'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/posts', require('./routes/posts'));
+app.use('/api/comments', require('./routes/comments'));
 
 
-// Test route
+// Routing to the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 app.get('/', (req, res) => {
-  res.send('API is running');
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
-app.listen(8080);
-
-// // connect to database
-// mongoose.connect(process.env.DB_CONNECTION, {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true }, () => {
-//     console.log('Connected to database')
-// });
+app.listen(process.env.PORT || 8080);
 
 // TODO:
 // Frontend TODO:

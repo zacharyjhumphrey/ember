@@ -16,7 +16,7 @@ function Account({ accountValue, setAccountValue, user, setUser }) {
   const handleLogIn = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:8080/auth/log-in', {
+    fetch('/api/auth/log-in', {
       method: 'POST',
       withCredentials: true,
       credentials: 'include',
@@ -37,7 +37,7 @@ function Account({ accountValue, setAccountValue, user, setUser }) {
   const handleCreateAccount = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:8080/auth/create-account', {
+    fetch('/api/auth/create-account', {
       method: 'POST',
       withCredentials: true,
       credentials: 'include',

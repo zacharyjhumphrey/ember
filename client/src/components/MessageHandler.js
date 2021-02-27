@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../css/Message.css';
-import FlashMessage from 'react-flash-message';
-import MessageQueue from '../resources/MessageQueue';
+// import FlashMessage from 'react-flash-message';
+// import MessageQueue from '../resources/MessageQueue';
 
 /*
     message: 
@@ -12,7 +12,7 @@ import MessageQueue from '../resources/MessageQueue';
             success: green
 */
 
-const Queue = new MessageQueue(10);
+// const Queue = new MessageQueue(10);
 
 const testData = {
     type: 'error',
